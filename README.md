@@ -2,14 +2,6 @@
 
 A Laravel package for interacting with Azure Blob Storage using OAuth 2.0 for secure authentication.
 
-## 📦 Installation
-
-You can install the package via Composer:
-
-```bash
-composer require yourname/azure-blob-storage
-```
-
 ## ⚙️ Configuration
 
 Publish the configuration file to customize Azure Blob Storage settings:
@@ -46,10 +38,11 @@ Add a new disk configuration for azureblobstorage-driver in config/filesystems.p
 ],
 ```
 
-## 🚀 Usage
+## 🚀 Usage With Laravel Storage Facade
 
 Here's how you can use the package to interact with Azure Blob Storage using the Storage facade:
-Writing a File
+ 
+### Writing a File
 
 To write a file to Azure Blob Storage, use the put method:
 
@@ -117,7 +110,7 @@ class FileUploadController extends Controller
 }
 ```
 
-## 🚀 Usage
+## 🚀 Direct Usage
 
 Here's how you can use the package to interact with Azure Blob Storage:
 
