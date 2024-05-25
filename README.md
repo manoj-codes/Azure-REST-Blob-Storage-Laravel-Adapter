@@ -1,42 +1,36 @@
 # 🌟 Laravel - Azure Blob Storage
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/yourname/azure-blob-storage.svg?style=flat-square)](https://packagist.org/packages/yourname/azure-blob-storage)
-[![Total Downloads](https://img.shields.io/packagist/dt/yourname/azure-blob-storage.svg?style=flat-square)](https://packagist.org/packages/yourname/azure-blob-storage)
-[![Build Status](https://img.shields.io/travis/yourname/azure-blob-storage/master.svg?style=flat-square)](https://travis-ci.org/yourname/azure-blob-storage)
-[![Quality Score](https://img.shields.io/scrutinizer/g/yourname/azure-blob-storage.svg?style=flat-square)](https://scrutinizer-ci.com/g/yourname/azure-blob-storage)
-[![License](https://img.shields.io/packagist/l/yourname/azure-blob-storage.svg?style=flat-square)](https://packagist.org/packages/yourname/azure-blob-storage)
-
 A Laravel package for interacting with Azure Blob Storage using OAuth 2.0 for secure authentication.
 
 ## 📦 Installation
 
 You can install the package via Composer:
 
-`bash
+```bash
 composer require yourname/azure-blob-storage
-`
+```
 
 ## ⚙️ Configuration
 
 Publish the configuration file to customize Azure Blob Storage settings:
 
-`bash
+```bash
 php artisan vendor:publish --provider="AzureBlobStorage\Providers\AzureBlobStorageServiceProvider" --tag=config
-`
+```
 
 Set the necessary environment variables in your `.env` file:
 
-`plaintext
+```plaintext
 AZURE_STORAGE_ACCOUNT_NAME=your_account_name
 AZURE_STORAGE_CONTAINER=your_container_name
 AZURE_TENANT_ID=your_tenant_id
 AZURE_CLIENT_ID=your_client_id
 AZURE_CLIENT_SECRET=your_client_secret
-`
+```
 
 Add a new disk configuration for azureblobstorage-driver in config/filesystems.php:
 
-`php
+```php
 
 'disks' => [
     // Other disk configurations...
@@ -50,7 +44,7 @@ Add a new disk configuration for azureblobstorage-driver in config/filesystems.p
         'client_secret' => env('AZURE_CLIENT_SECRET'),
     ],
 ],
-`
+```
 
 ## 🚀 Usage
 
@@ -59,41 +53,41 @@ Writing a File
 
 To write a file to Azure Blob Storage, use the put method:
 
-`php
+```php
 
 use Illuminate\Support\Facades\Storage;
 
 Storage::disk('azureblobstorage-driver')->put('lorem.txt', 'Lorem ipsum dolor sit amet.');
-`
+```
 
 ### Reading a File
 
 To read a file from Azure Blob Storage, use the get method:
 
-`php
+```php
 
 use Illuminate\Support\Facades\Storage;
 
 $content = Storage::disk('azureblobstorage-driver')->get('lorem.txt');
 echo $content;
-`
+```
 
 ### Deleting a File
 
 To delete a file from Azure Blob Storage, use the delete method:
 
-`php
+```php
 
 use Illuminate\Support\Facades\Storage;
 
 Storage::disk('azureblobstorage-driver')->delete('lorem.txt');
-`
+```
 
 ## Example in a Controller
 
 Here's a complete example of how to use the Storage facade in a Laravel controller to upload a file to Azure Blob Storage:
 
-`php
+```php
 
 namespace App\Http\Controllers;
 
@@ -121,7 +115,7 @@ class FileUploadController extends Controller
         return response()->json(['message' => 'File uploaded successfully.']);
     }
 }
-`
+```
 
 ## 🚀 Usage
 
@@ -129,39 +123,39 @@ Here's how you can use the package to interact with Azure Blob Storage:
 
 ### Write a File
 
-`php
+```php
 use AzureBlobStorage\Services\AzureBlobStorageService;
 
 $azureBlobService = app(AzureBlobStorageService::class);
 $result = $azureBlobService->write('path/to/file.txt', 'file contents');
-`
+```
 
 ### Read a File
 
-`php
+```php
 $result = $azureBlobService->read('path/to/file.txt');
-`
+```
 
 ### Delete a File
 
-`php
+```php
 $result = $azureBlobService->delete('path/to/file.txt');
-`
+```
 
 ### Set Metadata for a Blob
 
-`php
+```php
 $metadata = ['author' => 'John Doe'];
 $result = $azureBlobService->setMetadata('path/to/file.txt', $metadata);
-`
+```
 
 ## 🛠️ Testing
 
 To run the tests, use the following command:
 
-`bash
+```bash
 vendor/bin/phpunit
-`
+```
 
 
 ## 🌟 Features
